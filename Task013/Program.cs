@@ -1,15 +1,24 @@
 ﻿// Напишите программу, которая выводит третью цифру заданного числа или сообщает, что третьей цифры нет.
 
-Console.WriteLine("Введите любое целое число");
+Console.WriteLine("Введите любое число");
 int num = int.Parse(Console.ReadLine());
-if (num / 100 >= 1 || num / 100 <= -1 )
+if (num < 0)
 {
-    Console.WriteLine($"{num}-> {Math.Abs(num% 1000)/100}");
+    num = num * (-1);
+}
+if (num < 100)
+{
+    Console.WriteLine("Третьей цифры в заданном числе нет");
 }
 else
 {
-    Console.WriteLine($"{num}-> третьей цифры нет");
+    int i = 10;
+    while (num / i >= 10)
+    {
+        i = i * 10;
+    }
+    int icor1 = i / 100;
+    int icor2 = i / 10;
+    int numThird = num / icor1 - (num / icor2) * 10;
+    Console.WriteLine($"Третья цифра в заданном числе равна {numThird}");
 }
-
-// Второй вариант написания:
-Console.WriteLine( num / 100 >= 1 || num / 100 <= -1 ? $"{num}-> {Math.Abs(num % 1000)/100}" : $"{num}-> третьей цифры нет");
